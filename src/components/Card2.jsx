@@ -56,7 +56,7 @@ const Card2 = ({ isDarkMode }) => {
     <div
       className={`shadow-lg rounded-lg p-6 border ${isDarkMode ? "border-gray-700" : "border-gray-200"} ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
     >
-      <h2 className="text-lg font-bold mb-4">Product Data</h2>
+      <h2 className="text-lg font-bold mb-4">Recent Orders</h2>
       <div className="overflow-x-auto">
         <table className="w-full table-auto border-collapse">
           <thead>
