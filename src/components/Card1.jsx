@@ -8,50 +8,50 @@ const Card1 = ({ isDarkMode }) => {
       name: "Country A",
       price: 100,
       percentage: 25,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
     {
       name: "Country B",
       price: 150,
       percentage: -15,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
     {
       name: "Country C",
       price: 200,
       percentage: 10,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
     {
       name: "Country D",
       price: 180,
       percentage: -5,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
     {
       name: "Country E",
       price: 220,
       percentage: 30,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
     {
       name: "Country F",
       price: 120,
       percentage: -20,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
     {
       name: "Country G",
       price: 250,
       percentage: 15,
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: "https://codervent.com/fobia/demo/ltr/assets/images/logo-icon-2.png",
     },
   ];
 
   return (
     <div className={`shadow-lg rounded-lg p-6 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} border ${isDarkMode ? "border-gray-700" : "border-gray-200"}`}>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold">Country List</h2>
+        <h2 className="text-lg font-bold">Sales by Countries</h2>
         <div className={`flex items-center rounded-full w-8 h-8 justify-center ${isDarkMode ? "bg-gray-700" : "bg-gray-200"}`}>
           <BsThreeDots size={20} color={isDarkMode ? "#FFF" : "#333"} />
         </div>

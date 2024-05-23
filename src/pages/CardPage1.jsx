@@ -1,5 +1,7 @@
 import React from 'react';
 import Card1 from '../components/Card1';
+import CardChart from '../components/CardChart';
+import CardChart1 from '../components/CardChart1';
 
 const CardPage1 = ({ isDarkMode }) => {
   return (
@@ -9,10 +11,10 @@ const CardPage1 = ({ isDarkMode }) => {
           <Card1 isDarkMode={isDarkMode} />
         </div>
         <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-          <Card1 isDarkMode={isDarkMode} />
+          <CardChart isDarkMode={isDarkMode} />
         </div>
         <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-          <Card1 isDarkMode={isDarkMode} />
+          <CardChart1 isDarkMode={isDarkMode} />
         </div>
       </div>
     </div>
