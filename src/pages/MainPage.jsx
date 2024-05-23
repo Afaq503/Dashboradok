@@ -22,6 +22,7 @@ function MainPage() {
     dispatch(toggleDarkMode());
   };
 
+//   sdldfjasj
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
