@@ -3,13 +3,11 @@ import MainPage from "./pages/MainPage";
 import Store from "./redux/Store";
 
 function App() {
-
   return (
     <>
-    <Provider store={Store}>
-    <MainPage/>
-
-    </Provider>
+      <Provider store={Store}>
+        <MainPage />
+      </Provider>
     </>
   );
 }

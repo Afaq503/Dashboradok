@@ -1,6 +1,20 @@
 import React, { useState } from "react";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
+import { useLocation, Link } from "react-router-dom"
+
+
+
+
+const formatPathname = (pathname) => {
+  const paths = pathname.split("/").filter(Boolean);
+  return paths.map((path, index) => ({
+    name: path.charAt(0).toUpperCase() + path.slice(1),
+    url: "/" + paths.slice(0, index + 1).join("/"),
+  }));
+};
+
+
 
 const BreadCrums = ({ isDarkMode }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -9,28 +23,30 @@ const BreadCrums = ({ isDarkMode }) => {
     setDropdownOpen(!isDropdownOpen);
   };
 
+  const location = useLocation();
+  const breadcrumbs = formatPathname(location.pathname);
+
   return (
     <div className={`rounded-lg p-3 m-4 max-w-full flex items-center flex-wrap ${
         isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}>
       <ul className="flex items-center flex-wrap">
         <li className="inline-flex items-center">
-          <a href="#" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>
+          <Link href="/" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>
             <IoHome />
-          </a>
+          </Link>
           <span className={`mx-2 h-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-400'} font-medium`}>/</span>
         </li>
-        <li className="inline-flex items-center">
-          <a href="#" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>Page 1</a>
-          <span className={`mx-2 h-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-400'} font-medium`}>/</span>
-        </li>
-        <li className="inline-flex items-center">
-          <a href="#" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>Page 2</a>
-          <span className={`mx-2 h-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-400'} font-medium`}>/</span>
-        </li>
-        <li className="inline-flex items-center">
-          <a href="#" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>Page 3</a>
-        </li>
+        {breadcrumbs.map((breadcrumb, index) => (
+          <li key={index} className="inline-flex items-center">
+            <Link to={breadcrumb.url} className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>
+              {breadcrumb.name}
+            </Link>
+            {index < breadcrumbs.length - 1 && (
+              <span className={`mx-2 h-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-400'} font-medium`}>/</span>
+            )}
+          </li>
+        ))}
       </ul>
       <div className="flex items-center ml-auto">
         <div className="relative mr-4">
