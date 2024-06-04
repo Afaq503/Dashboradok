@@ -63,7 +63,7 @@ function MainPage() {
         }`}>
             <BreadCrums isDarkMode={isDarkMode} />
             <Routes>
-              <Route path="/ecommerce" element={<EcommercePage />} />
+              <Route path="/ecommerce" element={<EcommercePage  isOpen={isSidebarOpen} isDarkMode={isDarkMode} />} />
               <Route
                 path="/"
                 element={
