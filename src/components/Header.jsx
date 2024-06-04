@@ -1,48 +1,30 @@
 import React, { useState } from "react";
-import {
-  FaBars,
-  FaSearch,
-  FaMoon,
-  FaSun,
-  FaTh,
-  FaBell,
-} from "react-icons/fa";
+import { FaBars, FaSearch, FaMoon, FaSun, FaTh, FaBell } from "react-icons/fa";
 
-const Header = ({  toggleSidebar, isDarkMode, toggleDarkMode }) => {
+const Header = ({ toggleSidebar, isDarkMode, toggleDarkMode }) => {
   const [isSearchOpen, setSearchOpen] = useState(false);
 
   const handleSearchToggle = () => {
     setSearchOpen(!isSearchOpen);
   };
+  
 
   return (
     <div className={`flex items-center justify-between p-4 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'}`}>
-      <div className="flex items-center space-x-4">
-        <button
-          className="text-current p-2 rounded-md focus:outline-none hover:bg-gray-700 transition-colors"
-          onClick={toggleSidebar}
-        >
-          <FaBars size={20} />
-        </button>
-      </div>
-      <div className="flex items-center space-x-4">
-        
-        {isSearchOpen ?
-        (
-            <button
-          className="text-current p-2 rounded-md focus:outline-none hover:bg-gray-700 transition-colors"
-          onClick={handleSearchToggle}
-        >
-          <FaSearch size={20} />
-        </button>
-        )
-        
-        :(
-          <div className="relative">
+      <button
+        className="text-current p-2 rounded-md focus:outline-none hover:bg-gray-700 transition-colors"
+        onClick={toggleSidebar}
+      >
+        <FaBars size={20} />
+      </button>
+      
+      <div className="flex flex-1 justify-end ">
+        {isSearchOpen ? (
+          <div className="relative flex-1 sm:justify-between max-w-xs">
             <input
               type="text"
               placeholder="Search..."
-              className={`pl-8 pr-4 py-2 rounded-md ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-800'} focus:outline-none`}
+              className={`pl-8 pr-4 py-2 rounded-md w-full ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-800'} focus:outline-none`}
             />
             <button
               className="absolute inset-y-0 right-0 flex items-center px-4 focus:outline-none"
@@ -51,6 +33,13 @@ const Header = ({  toggleSidebar, isDarkMode, toggleDarkMode }) => {
               <FaSearch size={20} />
             </button>
           </div>
+        ) : (
+          <button
+            className="text-current p-2 rounded-md focus:outline-none hover:bg-gray-700 transition-colors"
+            onClick={handleSearchToggle}
+          >
+            <FaSearch size={20} />
+          </button>
         )}
         <button
           className="text-current p-2 rounded-md focus:outline-none hover:bg-gray-700 transition-colors"

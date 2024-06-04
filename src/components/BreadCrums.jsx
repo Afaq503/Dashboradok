@@ -32,7 +32,7 @@ const BreadCrums = ({ isDarkMode }) => {
       }`}>
       <ul className="flex items-center flex-wrap">
         <li className="inline-flex items-center">
-          <Link href="/" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>
+          <Link to="/" className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-500'}`}>
             <IoHome />
           </Link>
           <span className={`mx-2 h-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-400'} font-medium`}>/</span>

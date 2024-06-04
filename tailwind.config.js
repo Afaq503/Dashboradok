@@ -11,6 +11,9 @@ export default {
         'hover-bg-dark': '#374151', // bg-gray-700
         'hover-bg-light': '#e5e7eb', // bg-gray-200
       },
+      rotate: {
+        270: '270deg',
+      },
     },
   },
   plugins: [],

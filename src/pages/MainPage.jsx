@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import CardPage from "./CardPage";
@@ -12,37 +12,56 @@ import EcommercePage from "../pages/InerPage/EcommercePage";
 import GotoUp from "../components/GotoUp";
 
 function MainPage() {
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
   const isSidebarOpen = useSelector((state) => state.ui.isSidebarOpen);
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
   const dispatch = useDispatch();
 
   const handleToggleSidebar = () => {
-    dispatch(toggleSidebar());
+    if (!isMobileScreen) {
+      dispatch(toggleSidebar());
+    }
   };
 
   const handleToggleDarkMode = () => {
     dispatch(toggleDarkMode());
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setIsMobileScreen(window.innerWidth <= 640); // Adjust the breakpoint as needed
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <Router>
       <div
-        className={`flex h-screen  ${
+        className={`flex h-full ${
           isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
         }`}
       >
-        <Sidebar isOpen={isSidebarOpen} isDarkMode={isDarkMode} />
-        <div className="flex flex-col flex-1">
-          <Header
+        {!isMobileScreen && (
+          <Sidebar
             isOpen={isSidebarOpen}
+            isDarkMode={isDarkMode}
+            toggleSidebar={handleToggleSidebar}
+          />
+        )}
+        <div className= {`flex flex-col flex-1  flex-grow  `}>
+          <Header
             toggleSidebar={handleToggleSidebar}
             isDarkMode={isDarkMode}
             toggleDarkMode={handleToggleDarkMode}
           />
-
-          <div className="flex-1 p-6 ">
+          <div className={`flex-1 p-6 overflow-auto  ${
+          isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        }`}>
             <BreadCrums isDarkMode={isDarkMode} />
-            <div className="overflow-y-auto">
             <Routes>
               <Route path="/ecommerce" element={<EcommercePage />} />
               <Route
@@ -56,9 +75,9 @@ function MainPage() {
                 }
               />
             </Routes>
-            </div>
-            <GotoUp />
           </div>
+          <GotoUp />
+
         </div>
       </div>
     </Router>
